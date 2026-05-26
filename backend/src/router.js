@@ -4,45 +4,45 @@ const router = express.Router();
 
 const todos = [];
 
-let novoId = 1;
+let newId = 1;
 
 router.get("/todos", (req, res) => {
-  res.json(todos);
+  res.status(200).json(todos);
 });
 
 router.post('/todos', (req, res) => {
-  const { descricao } = req.body;
+  const { title } = req.body;
 
-  const novoTodo = {
-    id: novoId++,
-    descricao,
+  const newTodo = {
+    id: newId++,
+    title,
     status: false
   };
 
-  todos.push(novoTodo);
-  res.status(201).json(novoTodo);
+  todos.push(newTodo);
+  res.status(201).json(newTodo);
 });
 
 router.put("/todos/:id", (req, res) => {
   const id = Number(req.params.id);
 
-  const existeTodo = todos.find((todo) => todo.id === id);
+  const existsTodo = todos.find((todo) => todo.id === id);
 
-  if(!existeTodo) {
+  if(!existsTodo) {
     return res.status(404).send("TODO não encontrado!");
   }
 
-  const novoTodo = req.body;
+  const newTodo = req.body;
 
   const index = todos.findIndex((todo) => todo.id === id);
 
   todos[index] = {
     ...todos[index],
-    ...novoTodo,
+    ...newTodo,
     id,
   };
 
-  res.json(todos[index]);
+  res.status(201).json(req.body);
 })
 
 router.delete("/todos/:id", (req, res) => {
@@ -56,8 +56,8 @@ router.delete("/todos/:id", (req, res) => {
 
   todos.splice(index, 1);
 
-  res.json({
-    mensagem: "TODO deletado com sucesso!",
+  res.status(200).json({
+    message: 'TODO deletado com sucesso!'
   });
 })
 
