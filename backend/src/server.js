@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import app from "./app.js";
 import Todos from "./models/Todos.js";
@@ -5,7 +8,7 @@ import Sequelize from "sequelize";
 import config from "./config/database.js";
 import todosRouter from "./router.js"
 
-const port = 3000;
+const port = process.env.PORT;
 
 app.use('/todos', todosRouter)
 
