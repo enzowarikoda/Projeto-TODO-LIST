@@ -14,6 +14,8 @@ export const listTodos = async (req, res) => {
 
 export const createTodo = async (req, res) => {
     try {
+        const { title } = req.body;
+
         const todoToCreate = {
             id: crypto.randomUUID(),
             title
@@ -29,6 +31,8 @@ export const createTodo = async (req, res) => {
 
 export const updateTodo = async (req, res) => {
     try {
+        const { title } = req.body;
+
         const [updateTodo] = await Todos.update(
             { title },
             {
