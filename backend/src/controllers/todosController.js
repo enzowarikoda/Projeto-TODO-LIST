@@ -16,7 +16,7 @@ export const createTodo = async (req, res) => {
     try {
         const todoToCreate = {
             id: crypto.randomUUID(),
-            ...req.body,
+            title
         };
         const todo = await Todos.create(todoToCreate);
 
@@ -30,7 +30,7 @@ export const createTodo = async (req, res) => {
 export const updateTodo = async (req, res) => {
     try {
         const [updateTodo] = await Todos.update(
-            req.body,
+            { title },
             {
                 where: { id: req.params.id}
             }
@@ -61,7 +61,7 @@ export const deleteTodo = async (req, res) => {
     }
 };
 
-export const statusTodo = async (req, res) => {
+export const toggleTodoStatus = async (req, res) => {
     try {
         const todo = await Todos.findByPk(req.params.id);
 
