@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <title>TODO List</title>
+</head>
+
+<body>
+    <main>
+        <header class="topo">
+            <h1>Lista de Tarefas</h1>
+
+            <form class="add-todo">
+                <button class="addTodo" id="abrirDialog">Criar Tarefa</button>
+            </form>
+        </header>
+
+        <dialog id="dialogTodo">
+            <h2>Criar Tarefa</h2>
+            <form form-todo>
+                <input type="text" placeholder="Titulo da Tarefa" class="input-todo">
+                <button type="submit">Salvar Tarefa</button>
+            </form>
+        </dialog>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Titulo</td>
+                    <td><input class="checkbox" type="checkbox" id="status"></td>
+                    <td>
+                        <button class="actions-button"><span class="material-symbols-outlined">edit</span></button>
+                        <button class="actions-button"><span class="material-symbols-outlined">delete</span></button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </main>
+
+
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

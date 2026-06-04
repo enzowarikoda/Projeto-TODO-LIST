@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: dodgerblue;
+}
+
+main {
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 50px;
+    width: 80%;
+    margin: 40px auto;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    width: 100%;
+    gap: 15px;
+}
+
+.addTodo {
+    background-color: dodgerblue;
+    height: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    color: #FFF;
+    border: none;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.addTodo:hover {
+    background-color: midnightblue;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+td {
+    font-weight: 300;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+    width: 80%;
+    text-align: left;
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: 10%;
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 10%;
+}
+
+.actions-button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: #FFF;
+    display: inline-flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.actions-button:nth-child(1) {
+    margin-right: 5px;
+    background-color: orange;
+}
+
+.actions-button:nth-child(2) {
+    background-color: red;
+}
