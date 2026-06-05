@@ -1,53 +1,157 @@
 const tbody = document.querySelector('tbody');
+const formTodo = document.querySelector('.form-todo');
+const inputTodo = document.querySelector('.input-todo');
+const dialog = document.querySelector('#dialogTodo');
+const openDialogBtn = document.querySelector('#abrirDialog');
+const closeDialogBtn = document.querySelector('#fecharDialog');
+const dialogTitle = document.querySelector('#dialogTitle');
 
-const fetchTasks = async () => {
-    const response = await fetch('http://localhost:3000/todos');
-    const todos = await response.json();
-    return todos;
-}
+let editingTodoId = null;
+let editingTodoStatus = false;
 
-const createElement = (tag, innerText = '', innerHTML = '') => {
+const fetchTodos = async () => {
+    const response = await fetch(
+        'http://localhost:3000/todos'
+    );
+
+    return await response.json();
+};
+
+const createElement = (tag, innerText='', innerHTML='') => {
     const element = document.createElement(tag);
-    if(innerText) {
-        element.innerText = innerText;
+
+    if(innerText){
+        element.innerText= innerText;
     }
-    
-    if(innerHTML) {
-        element.innerHTML = innerHTML;
+
+    if(innerHTML){
+        element.innerHTML= innerHTML;
     }
 
     return element;
-}
+};
 
-const createRow = (task) => {
-    const { id, title, status } = task;
+const createRow = (todo) => {
+    const { id, title, status } = todo;
 
     const tr = createElement('tr');
     const tdTitle = createElement('td', title);
     const tdStatus = createElement('td', '', `<input type="checkbox" ${status ? 'checked' : ''}>`);
     const tdActions = createElement('td');
+    const editBtn = createElement('button', '', `<span class=" material-symbols-outlined">edit</span>`);
+    const deleteBtn = createElement( 'button', '', `<span class=" material-symbols-outlined">delete</span>`);
 
-    const editBtn = createElement('button', '', '<span class="material-symbols-outlined">edit</span>');
-    const deleteBtn = createElement('button', '', '<span class="material-symbols-outlined">delete</span>');
     editBtn.classList.add('actions-button');
+
     deleteBtn.classList.add('actions-button');
 
-    tdActions.appendChild(editBtn);
-    tdActions.appendChild(deleteBtn);
-    
-    tr.appendChild(tdTitle);
-    tr.appendChild(tdStatus);
-    tr.appendChild(tdActions);
+    const checkbox = tdStatus.querySelector('input');
+    checkbox.addEventListener('change',({ target }) => { toggleStatus( id, title, target.checked ); });
+
+    editBtn.addEventListener('click',() => { editTodo(id, title, status); });
+    deleteBtn.addEventListener('click', () => { deleteTodo(id); });
+
+    tdActions.append( editBtn, deleteBtn);
+
+    tr.append(tdTitle, tdStatus, tdActions);
 
     tbody.appendChild(tr);
-}
+
+};
 
 const loadTodos = async () => {
-    const todos = await fetchTasks();
+    const todos = await fetchTodos();
 
-    todos.forEach(todo => {
-        createRow(todo);
-    })
-}
+    tbody.innerHTML='';
+
+    todos.forEach(todo => createRow(todo));
+};
+
+const createTodo = async (event) => {
+    event.preventDefault();
+
+    const title = inputTodo.value.trim();
+
+    if(title==='') {
+        return;
+    }
+
+    if(editingTodoId) {
+        await fetch(`http://localhost:3000/todos/${editingTodoId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, status: editingTodoStatus })
+        });
+    } else {
+        await fetch('http://localhost:3000/todos', {
+            method:'POST',
+            headers:{ 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                title,
+                status:false
+            })
+        });
+    }
+
+    dialog.close();
+
+    inputTodo.value='';
+
+    editingTodoId=null;
+    editingTodoStatus = false;
+
+    await loadTodos();
+};
+
+const deleteTodo = async (id) => {
+    await fetch(`http://localhost:3000/todos/${id}`, {
+        method:'DELETE'
+    });
+
+    loadTodos();
+};
+
+const toggleStatus = async (id, title, status) => {
+      console.log({
+        title,
+        status
+    });
+    await fetch(`http://localhost:3000/todos/${id}`, {
+        method:'PUT',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({
+            title,
+            status
+        })
+    });
+
+    await loadTodos();
+};
+
+const editTodo = (id, title, status) => {
+    editingTodoId = id;
+
+    editingTodoStatus = status;
+
+    dialogTitle.innerText='Editar Tarefa';
+
+    inputTodo.value=title;
+
+    dialog.showModal();
+};
+
+openDialogBtn.addEventListener('click', () => {
+    editingTodoId=null;
+
+    dialogTitle.innerText= 'Criar Tarefa';
+
+    inputTodo.value='';
+
+    dialog.showModal();
+});
+
+closeDialogBtn.addEventListener('click', () => { dialog.close(); });
+
+formTodo.addEventListener('submit', createTodo);
 
 loadTodos();

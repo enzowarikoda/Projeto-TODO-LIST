@@ -5,6 +5,7 @@
 
 body {
     background-color: dodgerblue;
+    font-family: 'Poppins', sans-serif;
 }
 
 main {
@@ -25,7 +26,6 @@ main {
 
 .addTodo {
     background-color: dodgerblue;
-    height: 100%;
     padding: 10px;
     border-radius: 8px;
     color: #FFF;
@@ -36,7 +36,7 @@ main {
 }
 
 .addTodo:hover {
-    background-color: midnightblue;
+    opacity: .85;
 }
 
 table {
@@ -85,4 +85,60 @@ th:nth-child(3), td:nth-child(3) {
 
 .actions-button:nth-child(2) {
     background-color: red;
+}
+
+.dialog-todo {
+    width: 60%;
+    padding: 0;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin: 100px;
+    border: none;
+    overflow: hidden;
+    margin: auto;
+}
+
+.dialog-todo::backdrop {
+    background: rgba(0, 0, 0, .4);
+}
+
+.headerDialog {
+    padding: 20px;
+    background-color: dodgerblue;
+    color: white;
+}
+
+.form-todo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+}
+
+.input-todo {
+    padding: 12px;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.closeTodo {
+    background-color: red;
+    color: #FFF;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.closeTodo:hover {
+    opacity: .5;
 }

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <title>TODO List</title>
 </head>
@@ -15,16 +16,19 @@
         <header class="topo">
             <h1>Lista de Tarefas</h1>
 
-            <form class="add-todo">
-                <button class="addTodo" id="abrirDialog">Criar Tarefa</button>
-            </form>
+            <button class="addTodo" id="abrirDialog" type="button">Criar Tarefa</button>
         </header>
 
-        <dialog id="dialogTodo">
-            <h2>Criar Tarefa</h2>
-            <form form-todo>
+        <dialog class="dialog-todo" id="dialogTodo">
+            <div class="headerDialog">
+                <h2 id="dialogTitle">Criar Tarefa</h2>
+            </div>
+            <form class="form-todo">
                 <input type="text" placeholder="Titulo da Tarefa" class="input-todo">
-                <button type="submit">Salvar Tarefa</button>
+                <div class="dialog-buttons">
+                    <button class="closeTodo" type="button" id="fecharDialog">Cancelar</button>
+                    <button class="addTodo" type="submit">Salvar Tarefa</button>
+                </div>
             </form>
         </dialog>
 
@@ -38,14 +42,6 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td>Titulo</td>
-                    <td><input class="checkbox" type="checkbox" id="status"></td>
-                    <td>
-                        <button class="actions-button"><span class="material-symbols-outlined">edit</span></button>
-                        <button class="actions-button"><span class="material-symbols-outlined">delete</span></button>
-                    </td>
-                </tr>
 
             </tbody>
         </table>
