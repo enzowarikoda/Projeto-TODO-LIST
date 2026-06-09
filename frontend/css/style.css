@@ -4,24 +4,45 @@
 }
 
 body {
-    background-color: dodgerblue;
+    background-color: #DDD;
     font-family: 'Poppins', sans-serif;
 }
 
 main {
     background-color: #FFF;
     border-radius: 10px;
-    padding: 50px;
+    /* padding: 50px; */
     width: 80%;
     margin: 40px auto;
+    overflow: hidden;
+}
+
+.content {
+    padding: 30px;
 }
 
 .topo {
     display: flex;
+    background-color: dodgerblue;
+    color: #FFF;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     width: 100%;
-    gap: 15px;
+    padding: 20px 30px;
+}
+
+.search-new {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-todo {
+    width: 88%;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    padding: 12px;
+
 }
 
 .addTodo {
@@ -141,4 +162,30 @@ th:nth-child(3), td:nth-child(3) {
 
 .closeTodo:hover {
     opacity: .5;
+}
+
+.headerDialogDelete {
+    padding: 20px;
+    color: #FFF;
+    background-color: red;
+}
+
+.dialog-delete {
+    width: 30%;
+    padding: 0;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin: 100px;
+    border: none;
+    overflow: hidden;
+    margin: auto;
+}
+
+.dialog-content {
+    padding: 20px;
+}
+
+.dialog-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
 }
