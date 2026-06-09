@@ -31,10 +31,10 @@ export const createTodo = async (req, res) => {
 
 export const updateTodo = async (req, res) => {
     try {
-        const { title } = req.body;
+        const { title, status } = req.body;
 
         const [updateTodo] = await Todos.update(
-            { title },
+            { title, status },
             {
                 where: { id: req.params.id}
             }

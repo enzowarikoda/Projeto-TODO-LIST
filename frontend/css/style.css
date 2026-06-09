@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #DDD;
+    font-family: 'Poppins', sans-serif;
+}
+
+main {
+    background-color: #FFF;
+    border-radius: 10px;
+    /* padding: 50px; */
+    width: 80%;
+    margin: 40px auto;
+    overflow: hidden;
+}
+
+.content {
+    padding: 30px;
+}
+
+.topo {
+    display: flex;
+    background-color: dodgerblue;
+    color: #FFF;
+    justify-content: space-between;
+    margin-bottom: 0px;
+    width: 100%;
+    padding: 20px 30px;
+}
+
+.search-new {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-todo {
+    width: 88%;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    padding: 12px;
+
+}
+
+.addTodo {
+    background-color: dodgerblue;
+    padding: 10px;
+    border-radius: 8px;
+    color: #FFF;
+    border: none;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.addTodo:hover {
+    opacity: .85;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+td {
+    font-weight: 300;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+    width: 80%;
+    text-align: left;
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: 10%;
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 10%;
+}
+
+.actions-button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: #FFF;
+    display: inline-flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.actions-button:nth-child(1) {
+    margin-right: 5px;
+    background-color: orange;
+}
+
+.actions-button:nth-child(2) {
+    background-color: red;
+}
+
+.dialog-todo {
+    width: 60%;
+    padding: 0;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin: 100px;
+    border: none;
+    overflow: hidden;
+    margin: auto;
+}
+
+.dialog-todo::backdrop {
+    background: rgba(0, 0, 0, .4);
+}
+
+.headerDialog {
+    padding: 20px;
+    background-color: dodgerblue;
+    color: white;
+}
+
+.form-todo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+}
+
+.input-todo {
+    padding: 12px;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.closeTodo {
+    background-color: red;
+    color: #FFF;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.closeTodo:hover {
+    opacity: .5;
+}
+
+.headerDialogDelete {
+    padding: 20px;
+    color: #FFF;
+    background-color: red;
+}
+
+.dialog-delete {
+    width: 30%;
+    padding: 0;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin: 100px;
+    border: none;
+    overflow: hidden;
+    margin: auto;
+}
+
+.dialog-content {
+    padding: 20px;
+}
+
+.dialog-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}

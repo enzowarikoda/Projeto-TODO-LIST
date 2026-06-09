@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <title>TODO List</title>
+</head>
+
+<body>
+    <main>
+        <header class="topo">
+            <h1>Lista de Tarefas</h1>
+        </header>
+        <div class="content">
+            <div class="search-new">
+                <input class="search-todo" placeholder="Pesquisar Tarefa">
+                <button class="addTodo" id="abrirDialog" type="button">Criar Tarefa</button>
+            </div>
+
+            <dialog class="dialog-todo" id="dialogTodo">
+                <div class="headerDialog">
+                    <h2 id="dialogTitle">Criar Tarefa</h2>
+                </div>
+                <form class="form-todo">
+                    <input type="text" placeholder="Titulo da Tarefa" class="input-todo">
+                    <div class="dialog-buttons">
+                        <button class="closeTodo" type="button" id="fecharDialog">Cancelar</button>
+                        <button class="addTodo" type="submit">Salvar Tarefa</button>
+                    </div>
+                </form>
+            </dialog>
+
+            <dialog id="dialogDelete" class="dialog-delete">
+                <div class="headerDialogDelete">
+                    <h2>Excluir Tarefa</h2>
+                </div>
+                <div class="dialog-content">
+                    <p>Deseja realmente excluir esta tarefa?</p>
+
+                    <div class="dialog-buttons">
+                        <button type="button" id="cancelDelete" class="closeTodo">Cancelar</button>
+                        <button type="button" id="confirmDelete" class="addTodo">Excluir</button>
+                    </div>
+                </div>
+            </dialog>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
